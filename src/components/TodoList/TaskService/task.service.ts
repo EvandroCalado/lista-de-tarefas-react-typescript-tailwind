@@ -16,3 +16,6 @@ export async function delTask(id: number) {
   return await Api.delete(`/tasks/${id}` );
 }
 // Update
+export async function donTask(done: string) {
+  return await Api.put("/tasks/2", {done});
+}

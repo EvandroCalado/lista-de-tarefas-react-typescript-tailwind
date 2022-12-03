@@ -1,6 +1,6 @@
 import { Task, TaskProps } from "../Task";
 import { useState, useEffect } from "react";
-import { delTask, getTask, setTask } from "./TaskService/task.service";
+import { delTask, donTask, getTask, setTask } from "./TaskService/task.service";
 import { VscAdd } from "react-icons/vsc";
 
 export function TodoList() {
@@ -25,6 +25,12 @@ export function TodoList() {
     await delTask(task.id)
     await carregaTasks();
   }
+
+  //   async function completeTaks(task: any) {
+  //   console.log(await donTask(task.done))
+    
+  // }
+
   return (
     <div className="bg-gray-800 flex h-screen justify-center items-center">
       <div className="bg-slate-900 p-20 w-10/12 rounded-lg text-neutral-50">
@@ -47,7 +53,7 @@ export function TodoList() {
         </div>
         {tasks.length > 0 &&
           tasks.map((task, index) => {
-            return <Task done="" deleteTask={() => removeTask(task)} title={task.title} key={index} />;
+            return <Task deleteTask={() => removeTask(task)} title={task.title} key={index} />;
           })}
       </div>
     </div>
